@@ -6,16 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="quiz-section">
-        <h1>Code Quiz!</h1>
+    <div id="quiz-container">
+        <p>High Score: <span id="high-score">0</span></p>
+        <p><a href="leaderboard.html">Leader Board</a></p>
+        <h1>Code Quiz</h1>
+        <div id="timer">Time: 60 seconds</div>
         <div id="question"></div>
-        <ul id = "multipleChoice"></ul>
-        <button id="start">Start your quiz</button>
-        <input type="text" id="initals" placeholder="Enter your initials">
-        <button id="submit-btn">Submit</button>
-        <span id="timer">60</span>
+        <ul id="options"></ul>
+        <button id="start-button">Start</button>
+        <input type="text" id="initials" placeholder="Please Enter Your Initials">
+        <button id="submit-button" style="display: none;"><a href ="leaderboard.html">Submit</a></button>
     </div>
-    
     <script src="script.js"></script>
 </body>
 </html>
