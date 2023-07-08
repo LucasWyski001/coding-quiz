@@ -1,0 +1,55 @@
+body{
+    background-color: azure;
+}
+
+
+#quiz-container{
+    text-align: center;
+    align-items: center;
+    padding: 155px;
+    width:100px;
+    height:150px;
+    border-style: solid;
+    border-radius: 30px black;
+    position: absolute;
+    left: 37%;
+    top:20%;
+    background-color: white;
+    box-shadow: 3px 3px gray;
+}
+
+.leaderboard-link{
+    text-align: center;
+    position: absolute;
+    top: 80px;
+}
+
+.leaderboard-link a{
+    text-decoration: none;
+    color:black;
+    font-weight: 900;
+    border-style: solid;
+    border-radius: 6px black;
+    border-width: 2px;
+}
+
+.leaderboard-link a:hover{
+    background-color: black;
+    color: aliceblue;
+    transition: .3s ease-in;
+}
+
+#options{
+    list-style-type: none;
+    padding-left: 5%;
+    border-style: solid;
+    border-radius: 2px black;
+    cursor: pointer;
+}
+#options:hover{
+    background-color: aliceblue;
+    transition: .3s ease-in;
+}
+#initials{
+    
+}

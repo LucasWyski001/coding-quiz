@@ -88,7 +88,6 @@ function checkAnswer(answerIndex) {
   } else {
       endQuiz();
   }
-  saveScore();
 };
 
 
@@ -115,12 +114,37 @@ function displayHighscore() {
 
 function saveScore() {
   var initials = textboxElement.value;
-  leaderboards.push(["user: " + initials, "score: " + score, "time left: " + endTime]);
-  console.log(leaderboards);
-  console.log('Score:', timeLeft)
+  var totalScore = {
+    Initials: initials,
+    Score: score,
+    Time: endTime
+  };
+  leaderboards.push(totalScore);
+  // console.log(leaderboards);
+  // console.log('Score:', timeLeft)
   if (timeLeft > score) {
     score = timeLeft;
     console.log("New High Score: ", score);
   }
   localStorage.setItem("leaderboards", JSON.stringify(leaderboards));
 };
+
+
+
+function listHighScores() {
+  console.log(leaderboards)
+  for (var i = 0; i < leaderboards.length; i++) {
+      var highScores = leaderboards[i];
+      var li = document.createElement("li");
+      li.textContent = highScores.Initials + " your score is " + highScores.Score + " out of 100";
+      leaderBoard.appendChild(li);
+  }
+}
+function displayHighscore() {
+  var storedHighScores = JSON.parse(localStorage.getItem("leaderboards"));
+  if (storedHighScores != null) {
+      leaderboards = storedHighScores;
+  }
+  listHighScores()
+}
+displayHighscore()
