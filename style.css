@@ -102,6 +102,9 @@ body{
     background-color: white;
     box-shadow: 3px 3px gray;
 }
+#leaderboard-list{
+    list-style-type: none;
+}
 
 #gameStart{
     text-decoration: none;
