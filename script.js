@@ -2,23 +2,23 @@ var timerElement = document.getElementById("timer");
 var leaderboards = [];
 var quizQuestions = [
 {
-  question: "question 1",
-  options: ["Right","Wrong","Wrong","Wrong"],
+  question: "How do you size boxes?",
+  options: ["border-box","box-style","border-width","text-align"],
   answer: 0,
 },
 {
-  question: "question 2",
-  options: ["Wrong","Right","Wrong","Wrong"],
-  answer: 1,
+  question: "What is Bootstrap?",
+  options: ["CSS Framework","library","APi","CSS library"],
+  answer: 0,
 },
 {
-  question: "question 3",
-  options: ["Wrong","Wrong","Wrong","Right"],
+  question: "What is JavaScript?",
+  options: ["library","soft language","function","programming language"],
   answer: 3,
 },
 {
-  question: "question 4",
-  options: ["Wrong","Wrong","Right","Wrong"],
+  question: "What is SQL",
+  options: ["programming language","Data Base","Structured Query Language","object programming language"],
   answer: 2,
 },
 ];
