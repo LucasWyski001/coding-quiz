@@ -132,7 +132,7 @@ function saveScore() {
 };
 
 
-// this function lists the scores on the screen
+// this function lists the scores on the screen and connects to the other JS
 function listHighScores() {
   console.log(leaderboards)
   for (var i = 0; i < leaderboards.length; i++) {
