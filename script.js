@@ -22,9 +22,10 @@ var quizQuestions = [
   answer: 2,
 },
 ];
+
 let currentQuestionIndex = 0;
 let score = 0;
-let timeLeft = 100;
+let timeLeft = 60;
 let timerInterval;
 var endTime;
 const startElement = document.getElementById("start-button");
@@ -42,14 +43,14 @@ textboxElement.style.display = "none";
 
 
 
-
+// this starts the quiz
 function startButtonClicked() {
   setQuestion();
   startElement.style.display = "none";
   timerInterval = setInterval(updateTimer, 1000);
 };
 
-
+// this starts the timer when test starts
 function updateTimer() {
   timeLeft--;
   timerElement.textContent = timeLeft;
@@ -58,7 +59,7 @@ function updateTimer() {
   }
 };
 
-
+// this goes through the questions
 function setQuestion() {
   var currentQuestion = quizQuestions[currentQuestionIndex];
   questionElement.textContent = currentQuestion.question;
@@ -72,6 +73,7 @@ function setQuestion() {
     optionsElement.appendChild(choice);
   };
 };
+// this function checks the answers out of the quiz
 function checkAnswer(answerIndex) {
   var currentQuestion = quizQuestions[currentQuestionIndex];
   if (timeLeft <= 0){
@@ -80,7 +82,7 @@ function checkAnswer(answerIndex) {
   if (answerIndex === currentQuestion.answer) {
     score++;
   } else {
-    timeLeft -= 25;
+    timeLeft -= 10;
   }
   currentQuestionIndex++;
   if (currentQuestionIndex < quizQuestions.length) {
@@ -90,7 +92,7 @@ function checkAnswer(answerIndex) {
   }
 };
 
-
+// this functions ends the quiz
 function endQuiz() {
   clearInterval(timerInterval);
   endTime = timeLeft;
@@ -98,10 +100,10 @@ function endQuiz() {
   optionsElement.style.display = "none";
   textboxElement.style.display = "block";
   submitElement.style.display = "block";
-  questionElement.textContent = "Your score is " + score + " out of 100, with " + endTime + " seconds left. Enter your initials and click submit to save your score!";
+  questionElement.textContent = "Your score is " + score + " out of 4, with " + endTime + " seconds left. Enter your initials and click submit to save your score!";
 };
 
-
+// this function displays the highscore in the screen and stores it
 function displayHighscore() {
   var storedHighScore = localStorage.getItem("leaderboards");
   if (storedHighScore) {
@@ -111,7 +113,7 @@ function displayHighscore() {
 }
 
 
-
+// This function saves the score into the storage
 function saveScore() {
   var initials = textboxElement.value;
   var totalScore = {
@@ -122,21 +124,21 @@ function saveScore() {
   leaderboards.push(totalScore);
   // console.log(leaderboards);
   // console.log('Score:', timeLeft)
-  if (timeLeft > score) {
-    score = timeLeft;
-    console.log("New High Score: ", score);
-  }
+  // if (timeLeft > score) {
+  //   score = timeLeft;
+  //   console.log("New High Score: ", score);
+  // }
   localStorage.setItem("leaderboards", JSON.stringify(leaderboards));
 };
 
 
-
+// this function lists the scores on the screen
 function listHighScores() {
   console.log(leaderboards)
   for (var i = 0; i < leaderboards.length; i++) {
       var highScores = leaderboards[i];
       var li = document.createElement("li");
-      li.textContent = highScores.Initials + " your score is " + highScores.Score + " out of 100";
+      li.textContent = highScores.Initials + " your score is " + highScores.Score + " out of 4";
       leaderBoard.appendChild(li);
   }
 }
