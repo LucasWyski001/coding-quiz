@@ -1,6 +1,6 @@
-const timerElement = document.getElementById("timer");
-const leaderboards = [];
-const quizQuestions = [
+var timerElement = document.getElementById("timer");
+var leaderboards = [];
+var quizQuestions = [
 {
   question: "question 1",
   options: ["Right","Wrong","Wrong","Wrong"],
@@ -47,7 +47,6 @@ function startButtonClicked() {
   setQuestion();
   startElement.style.display = "none";
   timerInterval = setInterval(updateTimer, 1000);
-  displayHighscore();
 };
 
 
@@ -61,11 +60,11 @@ function updateTimer() {
 
 
 function setQuestion() {
-  const currentQuestion = quizQuestions[currentQuestionIndex];
+  var currentQuestion = quizQuestions[currentQuestionIndex];
   questionElement.textContent = currentQuestion.question;
   optionsElement.innerHTML = "";
   for (let i = 0; i < currentQuestion.options.length; i++) {
-    const choice = document.createElement("li");
+    var choice = document.createElement("li");
     choice.textContent = currentQuestion.options[i];
     choice.addEventListener("click", () => {
       checkAnswer(i);
@@ -74,7 +73,7 @@ function setQuestion() {
   };
 };
 function checkAnswer(answerIndex) {
-  const currentQuestion = quizQuestions[currentQuestionIndex];
+  var currentQuestion = quizQuestions[currentQuestionIndex];
   if (timeLeft <= 0){
     endQuiz();
   };
@@ -101,19 +100,17 @@ function endQuiz() {
   textboxElement.style.display = "block";
   submitElement.style.display = "block";
   questionElement.textContent = "Your score is " + score + " out of 100, with " + endTime + " seconds left. Enter your initials and click submit to save your score!";
-  localStorage.setItem("leaderboards", score.toString());
 };
 
 
-submitElement.addEventListener("click", saveScore);
 function displayHighscore() {
-  const storedHighScore = localStorage.getItem("highScore");
+  var storedHighScore = localStorage.getItem("leaderboards");
   if (storedHighScore) {
     score = parseInt(storedHighScore);
   }
-  const highScoreElement = document.getElementById("high-score");
   highScoreElement.textContent = score.toString();
 }
+
 
 
 function saveScore() {
